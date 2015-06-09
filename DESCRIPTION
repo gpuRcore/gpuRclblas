@@ -11,7 +11,7 @@ Description: This package is designed to be an extensive of the gpuR
   ViennaCL (OpenCL) version in gpuR.  This package will allow the user to 
   easily use the same functions with the clBLAS backend.
 License: GPL (>= 2)
-Imports: gpuR
+Depends: gpuR
 LinkingTo: Rcpp, RcppArmadillo, bigmemory
 Suggests: testthat
 URL: http://github.com/cdeterman/gpuRclblas

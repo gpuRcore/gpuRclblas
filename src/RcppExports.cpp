@@ -30,34 +30,6 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// cpp_amdBigMatrix_iaxpy
-void cpp_amdBigMatrix_iaxpy(SEXP alpha_, SEXP A_, SEXP B_, SEXP sourceCode_, SEXP kernel_function_);
-RcppExport SEXP gpuRclblas_cpp_amdBigMatrix_iaxpy(SEXP alpha_SEXP, SEXP A_SEXP, SEXP B_SEXP, SEXP sourceCode_SEXP, SEXP kernel_function_SEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< SEXP >::type alpha_(alpha_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type A_(A_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type B_(B_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type sourceCode_(sourceCode_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type kernel_function_(kernel_function_SEXP);
-    cpp_amdBigMatrix_iaxpy(alpha_, A_, B_, sourceCode_, kernel_function_);
-    return R_NilValue;
-END_RCPP
-}
-// cpp_amdBigMatrix_igemm
-void cpp_amdBigMatrix_igemm(SEXP A_, SEXP B_, SEXP C_, SEXP sourceCode_, SEXP kernel_function_);
-RcppExport SEXP gpuRclblas_cpp_amdBigMatrix_igemm(SEXP A_SEXP, SEXP B_SEXP, SEXP C_SEXP, SEXP sourceCode_SEXP, SEXP kernel_function_SEXP) {
-BEGIN_RCPP
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< SEXP >::type A_(A_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type B_(B_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type C_(C_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type sourceCode_(sourceCode_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type kernel_function_(kernel_function_SEXP);
-    cpp_amdBigMatrix_igemm(A_, B_, C_, sourceCode_, kernel_function_);
-    return R_NilValue;
-END_RCPP
-}
 // cpp_amdBigMatrix_saxpy
 void cpp_amdBigMatrix_saxpy(SEXP alpha_, SEXP A_, SEXP B_);
 RcppExport SEXP gpuRclblas_cpp_amdBigMatrix_saxpy(SEXP alpha_SEXP, SEXP A_SEXP, SEXP B_SEXP) {
@@ -107,35 +79,6 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// cpp_amdMatrix_iaxpy
-SEXP cpp_amdMatrix_iaxpy(SEXP alpha_, SEXP A_, SEXP B_, SEXP sourceCode_, SEXP kernel_function_);
-RcppExport SEXP gpuRclblas_cpp_amdMatrix_iaxpy(SEXP alpha_SEXP, SEXP A_SEXP, SEXP B_SEXP, SEXP sourceCode_SEXP, SEXP kernel_function_SEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< SEXP >::type alpha_(alpha_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type A_(A_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type B_(B_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type sourceCode_(sourceCode_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type kernel_function_(kernel_function_SEXP);
-    __result = Rcpp::wrap(cpp_amdMatrix_iaxpy(alpha_, A_, B_, sourceCode_, kernel_function_));
-    return __result;
-END_RCPP
-}
-// cpp_amdMatrix_igemm
-SEXP cpp_amdMatrix_igemm(SEXP A_, SEXP B_, SEXP sourceCode_, SEXP kernel_function_);
-RcppExport SEXP gpuRclblas_cpp_amdMatrix_igemm(SEXP A_SEXP, SEXP B_SEXP, SEXP sourceCode_SEXP, SEXP kernel_function_SEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< SEXP >::type A_(A_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type B_(B_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type sourceCode_(sourceCode_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type kernel_function_(kernel_function_SEXP);
-    __result = Rcpp::wrap(cpp_amdMatrix_igemm(A_, B_, sourceCode_, kernel_function_));
-    return __result;
-END_RCPP
-}
 // cpp_amdMatrix_saxpy
 SEXP cpp_amdMatrix_saxpy(SEXP alpha_, SEXP A_, SEXP B_);
 RcppExport SEXP gpuRclblas_cpp_amdMatrix_saxpy(SEXP alpha_SEXP, SEXP A_SEXP, SEXP B_SEXP) {
@@ -158,21 +101,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< SEXP >::type A_(A_SEXP);
     Rcpp::traits::input_parameter< SEXP >::type B_(B_SEXP);
     __result = Rcpp::wrap(cpp_amdMatrix_sgemm(A_, B_));
-    return __result;
-END_RCPP
-}
-// cpp_gpu_two_vec
-IntegerVector cpp_gpu_two_vec(IntegerVector A_, IntegerVector B_, IntegerVector C_, SEXP sourceCode_, SEXP kernel_function_);
-RcppExport SEXP gpuRclblas_cpp_gpu_two_vec(SEXP A_SEXP, SEXP B_SEXP, SEXP C_SEXP, SEXP sourceCode_SEXP, SEXP kernel_function_SEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< IntegerVector >::type A_(A_SEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type B_(B_SEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type C_(C_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type sourceCode_(sourceCode_SEXP);
-    Rcpp::traits::input_parameter< SEXP >::type kernel_function_(kernel_function_SEXP);
-    __result = Rcpp::wrap(cpp_gpu_two_vec(A_, B_, C_, sourceCode_, kernel_function_));
     return __result;
 END_RCPP
 }

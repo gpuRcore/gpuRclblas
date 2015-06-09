@@ -53,13 +53,7 @@ setClass('amdMatrix',
 #' \code{\link{damdMatrix-class}}
 #' @export
 setClass("iamdMatrix",
-         contains = "amdMatrix",
-         validity = function(object) {
-           if( typeof(object) != "integer"){
-             return("iamdMatrix must be of type 'integer'")
-           }
-           TRUE
-         })
+         contains = "amdMatrix")
 
 #' @title famdMatrix Class
 #' @description An integer type matrix in the S4 \code{amdMatrix}
@@ -78,13 +72,8 @@ setClass("iamdMatrix",
 #' \code{\link{damdMatrix-class}}
 #' @export
 setClass("famdMatrix",
-         contains = "amdMatrix",
-         validity = function(object) {
-           if( typeof(object) != "float"){
-             return("famdMatrix must be of type 'float'")
-           }
-           TRUE
-         })
+         contains = "amdMatrix"
+)
 
 
 #' @title damdMatrix Class
@@ -104,10 +93,4 @@ setClass("famdMatrix",
 #' \code{\link{famdMatrix-class}}
 #' @export
 setClass("damdMatrix",
-         contains = "amdMatrix",
-         validity = function(object) {
-           if( typeof(object) != "double"){
-             return("damdMatrix must be of type 'double'")
-           }
-           TRUE
-         })
+         contains = "amdMatrix")

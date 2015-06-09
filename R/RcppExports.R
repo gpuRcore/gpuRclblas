@@ -9,14 +9,6 @@ cpp_amdBigMatrix_dgemm <- function(A_, B_, C_) {
     invisible(.Call('gpuRclblas_cpp_amdBigMatrix_dgemm', PACKAGE = 'gpuRclblas', A_, B_, C_))
 }
 
-cpp_amdBigMatrix_iaxpy <- function(alpha_, A_, B_, sourceCode_, kernel_function_) {
-    invisible(.Call('gpuRclblas_cpp_amdBigMatrix_iaxpy', PACKAGE = 'gpuRclblas', alpha_, A_, B_, sourceCode_, kernel_function_))
-}
-
-cpp_amdBigMatrix_igemm <- function(A_, B_, C_, sourceCode_, kernel_function_) {
-    invisible(.Call('gpuRclblas_cpp_amdBigMatrix_igemm', PACKAGE = 'gpuRclblas', A_, B_, C_, sourceCode_, kernel_function_))
-}
-
 cpp_amdBigMatrix_saxpy <- function(alpha_, A_, B_) {
     invisible(.Call('gpuRclblas_cpp_amdBigMatrix_saxpy', PACKAGE = 'gpuRclblas', alpha_, A_, B_))
 }
@@ -33,23 +25,11 @@ cpp_amdMatrix_dgemm <- function(A_, B_) {
     .Call('gpuRclblas_cpp_amdMatrix_dgemm', PACKAGE = 'gpuRclblas', A_, B_)
 }
 
-cpp_amdMatrix_iaxpy <- function(alpha_, A_, B_, sourceCode_, kernel_function_) {
-    .Call('gpuRclblas_cpp_amdMatrix_iaxpy', PACKAGE = 'gpuRclblas', alpha_, A_, B_, sourceCode_, kernel_function_)
-}
-
-cpp_amdMatrix_igemm <- function(A_, B_, sourceCode_, kernel_function_) {
-    .Call('gpuRclblas_cpp_amdMatrix_igemm', PACKAGE = 'gpuRclblas', A_, B_, sourceCode_, kernel_function_)
-}
-
 cpp_amdMatrix_saxpy <- function(alpha_, A_, B_) {
     .Call('gpuRclblas_cpp_amdMatrix_saxpy', PACKAGE = 'gpuRclblas', alpha_, A_, B_)
 }
 
 cpp_amdMatrix_sgemm <- function(A_, B_) {
     .Call('gpuRclblas_cpp_amdMatrix_sgemm', PACKAGE = 'gpuRclblas', A_, B_)
-}
-
-cpp_gpu_two_vec <- function(A_, B_, C_, sourceCode_, kernel_function_) {
-    .Call('gpuRclblas_cpp_gpu_two_vec', PACKAGE = 'gpuRclblas', A_, B_, C_, sourceCode_, kernel_function_)
 }
 

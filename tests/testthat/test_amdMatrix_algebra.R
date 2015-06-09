@@ -1,4 +1,4 @@
-library(gpuR)
+library(gpuRclblas)
 context("amdMatrix algebra")
 
 # set seed
