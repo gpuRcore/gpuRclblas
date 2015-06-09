@@ -16,6 +16,7 @@ r_packages:
 r_github_packages:
   - kaneplusplus/bigmemory
   - cdeterman/bigalgebra
+  - cdeterman/RViennaCL
   - cdeterman/gpuR
 
 before_install:
