@@ -88,8 +88,7 @@ SEXP cpp_amdMatrix_sgemm(SEXP A_, SEXP B_)
                          bufC(), 0, ldc,
                          1, &queue(), 0, NULL, 0);
     if (err != CL_SUCCESS) {
-        std::cout << err << std::endl;
-        stop("clblasSgemmEx() failed");
+        stop("clblasSgemmEx() failed with" + err);
     }
     else {
         /* Wait for calculations to be finished. */

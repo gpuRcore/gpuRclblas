@@ -1,6 +1,6 @@
 Package: gpuRclblas
 Type: Package
-Title: clBLAS functions for R Objects
+Title: clBLAS Functions for R Objects
 Version: 1.0.0
 Date: 2015-05-29
 Author: Charles Determan Jr.
@@ -12,6 +12,7 @@ Description: This package is designed to be an extensive of the gpuR
   easily use the same functions with the clBLAS backend.
 License: GPL (>= 2)
 Depends: gpuR
+Imports: Rcpp
 LinkingTo: Rcpp, RcppArmadillo, bigmemory
 Suggests: testthat
 URL: http://github.com/cdeterman/gpuRclblas
