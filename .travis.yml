@@ -31,6 +31,8 @@ before_install:
   - cd ~
   - git clone https://github.com/KhronosGroup/OpenCL-Headers.git
   - sudo cp OpenCL-Headers/* /usr/include/CL/
+  - wget -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/2.1/cl.hpp;
+  - sudo cp cl.hpp /usr/include/CL/
   - git clone https://github.com/clMathLibraries/clBLAS.git
   - cd clBLAS
   - mkdir -p build && cd build
