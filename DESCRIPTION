@@ -2,18 +2,20 @@ Package: gpuRclblas
 Type: Package
 Title: clBLAS Functions for R Objects
 Version: 1.0.0
-Date: 2015-05-29
+Date: 2016-08-18
 Author: Charles Determan Jr.
 Maintainer: Charles Determan Jr. <cdetermanjr@gmail.com>
 Description: This package is designed to be an extensive of the gpuR
-  package.  The classes herein inherit the gpuR classes as all the
-  functions herein are intended to also be implemented with the respective
-  ViennaCL (OpenCL) version in gpuR.  This package will allow the user to 
-  easily use the same functions with the clBLAS backend.
+    package.  The classes herein inherit the gpuR classes as all the
+    functions herein are intended to also be implemented with the respective
+    ViennaCL (OpenCL) version in gpuR.  This package will allow the user to
+    easily use the same functions with the clBLAS backend.
 License: GPL (>= 2)
-Depends: gpuR
-Imports: Rcpp
-LinkingTo: Rcpp, RcppArmadillo, bigmemory
-Suggests: testthat
+Imports:
+    Rcpp
+LinkingTo: Rcpp, RcppEigen, gpuR, RViennaCL
+Suggests:
+    testthat
 URL: http://github.com/cdeterman/gpuRclblas
 BugReports: http://github.com/cdeterman/gpuRclblas/issues/new
+RoxygenNote: 5.0.1
