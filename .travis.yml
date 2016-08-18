@@ -30,7 +30,7 @@ before_install:
   - sudo mkdir CL 
   - cd ~
   - git clone https://github.com/KhronosGroup/OpenCL-Headers.git
-  - cp OpenCL-Headers/* /usr/include/CL/
+  - sudo cp OpenCL-Headers/* /usr/include/CL/
   - git clone https://github.com/clMathLibraries/clBLAS.git
   - cd clBLAS
   - mkdir -p build && cd build
