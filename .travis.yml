@@ -28,11 +28,10 @@ before_install:
   - export CXX="g++-4.8"
   - cd /usr/include
   - sudo mkdir CL 
-  - cd
-  - cd ..
-  - sudo git clone https://github.com/KhronosGroup/OpenCL-Headers.git
-  - sudo cp OpenCL-Headers/* /usr/include/CL/
-  - sudo git clone https://github.com/clMathLibraries/clBLAS.git
+  - cd ~
+  - git clone https://github.com/KhronosGroup/OpenCL-Headers.git
+  - cp OpenCL-Headers/* /usr/include/CL/
+  - git clone https://github.com/clMathLibraries/clBLAS.git
   - cd clBLAS
   - mkdir -p build && cd build
   - cmake ../src -DBUILD_TEST=OFF -DBUILD_PERFORMANCE=OFF
