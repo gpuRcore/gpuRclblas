@@ -30,7 +30,7 @@ before_install:
   - git clone https://github.com/clMathLibraries/clBLAS.git
   - cd clBLAS
   - mkdir -p build && cd build
-  - cmake ../src -DCMAKE_BUILD_TYPE=Release
+  - cmake ../src -DBUILD_TEST=OFF -DBUILD_PERFORMANCE=OFF
   - make && sudo make install
   - export LD_LIBRARY_PATH=/usr/local/lib64:${LD_LIBRARY_PATH}
   - export LD_RUN_PATH=/usr/local/lib64:${LD_RUN_PATH}

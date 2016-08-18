@@ -1,5 +1,7 @@
 # gpuRcuda: The Simple clBLAS GPU Interface for R
-[![Travis-CI Build Status](https://travis-ci.org/cdeterman/gpuRclblas.png?branch=master)](https://travis-ci.org/cdeterman/gpuRclblas)
+[![Travis-CI Build Status](https://travis-ci.org/gpuRcore/gpuRclblas.svg?branch=master)](https://travis-ci.org/gpuRcore/gpuRclblas)
+
+Test coverage: [![Coverage Status](https://coveralls.io/repos/github/gpuRcore/gpuRclblas/badge.svg?branch=master)](https://coveralls.io/github/gpuRcore/gpuRclblas?branch=master)
 
 Welcome to gpuRcuda!  This package is designed to be an extension upon the
 more general [gpuR](https://github.com/cdeterman/gpuR) package.  Essentially,
