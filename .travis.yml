@@ -12,6 +12,7 @@ r_packages:
   - Rcpp
   - RcppEigen
   - BH
+  - roxygen2
   - covr
 
 r_github_packages:
