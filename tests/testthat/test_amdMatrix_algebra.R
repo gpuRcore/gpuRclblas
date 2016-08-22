@@ -15,7 +15,7 @@ B <- matrix(rnorm(ORDER^2), nrow=ORDER, ncol=ORDER)
 
 test_that("amdMatrix Single Precision Matrix multiplication successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
 
   C <- A %*% B
 
@@ -31,7 +31,7 @@ test_that("amdMatrix Single Precision Matrix multiplication successful", {
 
 test_that("amdMatrix Single Precision Matrix Subtraction successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
 
   C <- A - B
 
