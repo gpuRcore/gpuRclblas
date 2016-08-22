@@ -47,7 +47,7 @@ test_that("amdMatrix Single Precision Matrix Subtraction successful", {
 
 test_that("amdMatrix Single Precision Matrix Addition successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
 
   C <- A + B
 
@@ -63,7 +63,7 @@ test_that("amdMatrix Single Precision Matrix Addition successful", {
 
 test_that("amdMatrix Double Precision Matrix multiplication successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
   has_double_skip()
 
   C <- A %*% B
@@ -80,7 +80,7 @@ test_that("amdMatrix Double Precision Matrix multiplication successful", {
 
 test_that("amdMatrix Double Precision Matrix Subtraction successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
   has_double_skip()
 
   C <- A - B
@@ -97,7 +97,7 @@ test_that("amdMatrix Double Precision Matrix Subtraction successful", {
 
 test_that("amdMatrix Double Precision Matrix Addition successful", {
 
-  has_gpu_skip()
+  has_cpu_skip()
   has_double_skip()
 
   C <- A + B
