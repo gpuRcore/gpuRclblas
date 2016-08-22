@@ -1,3 +1,4 @@
+#' @import methods
 
 #' @export
 setMethod("%*%", signature(x="amdMatrix", y = "amdMatrix"),

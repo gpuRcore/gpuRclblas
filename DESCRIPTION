@@ -11,8 +11,12 @@ Description: This package is designed to be an extensive of the gpuR
     ViennaCL (OpenCL) version in gpuR.  This package will allow the user to
     easily use the same functions with the clBLAS backend.
 License: GPL (>= 2)
+Depends:
+    methods,
+    gpuR (>= 1.1.4)
 Imports:
-    Rcpp
+    Rcpp,
+    assertive
 LinkingTo: Rcpp, RcppEigen, gpuR, RViennaCL
 Suggests:
     testthat
