@@ -30,56 +30,39 @@ setMethod('amdMatrix',
             
             if (is.null(type)) type <- typeof(data)
             
-            device <- currentDevice()
-            
-            context_index <- ifelse(is.null(ctx_id), currentContext(), as.integer(ctx_id))
-            device_index <- as.integer(device$device_index)
-            device_type <- device$device_type
-            device_name <- switch(device_type,
-                                  "gpu" = gpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                  "cpu" = cpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                  stop("Unrecognized device type")
-            )
-            platform_index <- currentPlatform()$platform_index
-            platform_name <- platformInfo(platform_index)$platformName
+            # just create the base object and then change class
+            tmp <- gpuMatrix(data = data, 
+                             nrow = nrow(data), ncol = ncol(data), 
+                             type = type, 
+                             ctx_id = ctx_id)
             
             data = switch(type,
                           integer = {
-                            new("iamdMatrix", 
-                                address=getRmatEigenAddress(data, 
-                                                        nrow(data),
-                                                        ncol(data), 
-                                                        4L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
+                              new("iamdMatrix", 
+                                  address=tmp@address,
+                                  .context_index = tmp@.context_index,
+                                  .platform_index = tmp@.platform_index,
+                                  .platform = tmp@.platform,
+                                  .device_index = tmp@.device_index,
+                                  .device = tmp@.device)
                           },
                           float = {
-                            new("famdMatrix", 
-                                address=getRmatEigenAddress(data, 
-                                                        nrow(data),
-                                                        ncol(data), 
-                                                        6L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
+                              new("famdMatrix", 
+                                  address=tmp@address,
+                                  .context_index = tmp@.context_index,
+                                  .platform_index = tmp@.platform_index,
+                                  .platform = tmp@.platform,
+                                  .device_index = tmp@.device_index,
+                                  .device = tmp@.device)
                           },
                           double = {
-                            assert_has_double(platform_index, device_index)
-                            new("damdMatrix",
-                                address = getRmatEigenAddress(data, 
-                                                          nrow(data),
-                                                          ncol(data), 
-                                                          8L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
+                              new("damdMatrix",
+                                  address = tmp@address,
+                                  .context_index = tmp@.context_index,
+                                  .platform_index = tmp@.platform_index,
+                                  .platform = tmp@.platform,
+                                  .device_index = tmp@.device_index,
+                                  .device = tmp@.device)
                           },
                           stop("this is an unrecognized 
                                  or unimplemented data type")
@@ -96,56 +79,42 @@ setMethod('amdMatrix',
           signature(data = 'missing'),
           function(data, nrow=NA, ncol=NA, type=NULL, ctx_id = NULL){
             
-            if (is.null(type)) type <- getOption("gpuR.default.type")
-            
-            assert_is_numeric(nrow)
-            assert_is_numeric(ncol)
-            
-            device <- currentDevice()
-            
-            context_index <- ifelse(is.null(ctx_id), currentContext(), as.integer(ctx_id))
-            device_index <- as.integer(device$device_index)
-            device_type <- device$device_type
-            device_name <- switch(device_type,
-                                  "gpu" = gpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                  "cpu" = cpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                  stop("Unrecognized device type")
-            )
-            platform_index <- currentPlatform()$platform_index
-            platform_name <- platformInfo(platform_index)$platformName
-            
-            data = switch(type,
-                          integer = {
-                            new("iamdMatrix", 
-                                address=emptyEigenXptr(nrow, ncol, 4L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
-                          },
-                          float = {
-                            new("famdMatrix", 
-                                address=emptyEigenXptr(nrow, ncol, 6L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
-                          },
-                          double = {
-                            assert_has_double(platform_index, device_index)
-                            new("damdMatrix",
-                                address = emptyEigenXptr(nrow, ncol, 8L),
-                                .context_index = context_index,
-                                .platform_index = platform_index,
-                                .platform = platform_name,
-                                .device_index = device_index,
-                                .device = device_name)
-                          },
-                          stop("this is an unrecognized 
+              # just create the base object and then change class
+              tmp <- gpuMatrix(nrow = nrow, ncol = ncol, 
+                               type = type, 
+                               ctx_id = ctx_id)
+              
+              data = switch(type,
+                            integer = {
+                                new("iamdMatrix", 
+                                    address=tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            float = {
+                                new("famdMatrix", 
+                                    address=tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            double = {
+                                new("damdMatrix",
+                                    address = tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            stop("this is an unrecognized 
                                  or unimplemented data type")
-            )
+              )
             
             return(data)
           },
@@ -203,73 +172,43 @@ setMethod('amdMatrix',
           signature(data = 'numeric'),
           function(data, nrow, ncol, type=NULL, ctx_id = NULL){
               
-              if (is.null(type)) type <- "double"
+              # just create the base object and then change class
+              tmp <- gpuMatrix(data = data, 
+                               nrow = nrow, ncol = ncol, 
+                               type = type, 
+                               ctx_id = ctx_id)
               
-              assert_is_numeric(nrow)
-              assert_is_numeric(ncol)
-              
-              device <- currentDevice()
-              
-              context_index <- ifelse(is.null(ctx_id), currentContext(), as.integer(ctx_id))
-              device_index <- as.integer(device$device_index)
-              device_type <- device$device_type
-              device_name <- switch(device_type,
-                                    "gpu" = gpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                    "cpu" = cpuInfo(device_idx = as.integer(device_index))$deviceName,
-                                    stop("Unrecognized device type")
-              )
-              platform_index <- currentPlatform()$platform_index
-              platform_name <- platformInfo(platform_index)$platformName
-              
-              if(length(data) > 1){
-                  data = switch(type,
-                                float = {
-                                    new("famdMatrix", 
-                                        address=sexpVecToEigenXptr(data, nrow, ncol, 6L),
-                                        .context_index = context_index,
-                                        .platform_index = platform_index,
-                                        .platform = platform_name,
-                                        .device_index = device_index,
-                                        .device = device_name)
-                                },
-                                double = {
-                                    assert_has_double(platform_index, device_index)
-                                    new("damdMatrix",
-                                        address = sexpVecToEigenXptr(data, nrow, ncol, 8L),
-                                        .context_index = context_index,
-                                        .platform_index = platform_index,
-                                        .platform = platform_name,
-                                        .device_index = device_index,
-                                        .device = device_name)
-                                },
-                                stop("this is an unrecognized 
-                                     or unimplemented data type")
-                                )
-              }else{
-                  data = switch(type,
-                                float = {
-                                    new("famdMatrix", 
-                                        address=initScalarEigenXptr(data, nrow, ncol, 6L),
-                                        .context_index = context_index,
-                                        .platform_index = platform_index,
-                                        .platform = platform_name,
-                                        .device_index = device_index,
-                                        .device = device_name)
-                                },
-                                double = {
-                                    assert_has_double(platform_index, device_index)
-                                    new("damdMatrix",
-                                        address = initScalarEigenXptr(data, nrow, ncol, 8L),
-                                        .context_index = context_index,
-                                        .platform_index = platform_index,
-                                        .platform = platform_name,
-                                        .device_index = device_index,
-                                        .device = device_name)
-                                },
-                                stop("this is an unrecognized 
+              data = switch(type,
+                            integer = {
+                                new("iamdMatrix", 
+                                    address=tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            float = {
+                                new("famdMatrix", 
+                                    address=tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            double = {
+                                new("damdMatrix",
+                                    address = tmp@address,
+                                    .context_index = tmp@.context_index,
+                                    .platform_index = tmp@.platform_index,
+                                    .platform = tmp@.platform,
+                                    .device_index = tmp@.device_index,
+                                    .device = tmp@.device)
+                            },
+                            stop("this is an unrecognized 
                                  or unimplemented data type")
-                  )
-              }
+              )
               
               return(data)
           },
