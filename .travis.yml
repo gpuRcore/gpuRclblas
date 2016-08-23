@@ -27,6 +27,7 @@ before_install:
   - sudo apt-get install -qq mesa-common-dev fglrx fglrx-dev
   - sudo apt-get install -qq g++-4.8
   - export CXX="g++-4.8"
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
   - cd /usr/include
   - sudo mkdir CL 
   - cd ~
